@@ -1,3 +1,5 @@
+# This .py file in combination with UptimeRobot keeps my bot alive without keeping my browser open.
+
 from flask import Flask
 from threading import Thread
 
