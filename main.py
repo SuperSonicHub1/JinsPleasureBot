@@ -1,6 +1,7 @@
 import discord
 import praw
 import os
+import logging; logging.basicConfig(level=logging.INFO)
 from keep_alive import keep_alive
 
 # Get access to the Reddit API.
@@ -36,7 +37,7 @@ class MyClient(discord.Client):
             submission = reddit.subreddit("AnimeGirls+CuteAnimeGirls").random()
             while submission.over_18 == True: #stops NSFW posts from showing up
                 submission = reddit.subreddit("AnimeGirls+CuteAnimeGirls").random()
-            await message.channel.send("From {0}, {1}: {2}".format(
+            await message.channel.send("From {0}, *{1}*: {2}".format(
                 submission.subreddit, submission.title, submission.url))
 
 
