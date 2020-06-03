@@ -12,6 +12,7 @@ reddit = praw.Reddit(
 # Allow for the use of multiple commands; the last two have spaces to fight against mobile autocorrect.
 qtgrls = ["!qtgrls", "!qtgirls", "! qtgrls", "! qtgirls"]
 
+
 # Actual code starts here.
 class MyClient(discord.Client):
     async def on_ready(self):
@@ -29,13 +30,12 @@ class MyClient(discord.Client):
         # Stops bot from being spammed throughout the server.
         if str(message.channel) != "jins-pleasure-bot":
             return
-        
+
         # Sends the message.
         if message.content.casefold() in qtgrls:
-            for submission in reddit.subreddit("AnimeGirls").new(
-                    limit=1):
-                await message.channel.send("{0}: {1}".format(
-                    submission.title, submission.url))
+            submission = reddit.subreddit("AnimeGirls+CuteAnimeGirls").random()
+            await message.channel.send("From {0}, {1}: {2}".format(
+                submission.subreddit, submission.title, submission.url))
 
 
 client = MyClient()
