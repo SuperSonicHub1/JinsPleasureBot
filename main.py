@@ -34,9 +34,9 @@ class MyClient(discord.Client):
 
         # Sends the message.
         if message.content.casefold() in qtgrls:
-            submission = reddit.subreddit("AnimeGirls+CuteAnimeGirls").random()
+            submission = reddit.subreddit("AnimeGirls+CuteAnimeGirls+awwnime").random()
             while submission.over_18 == True: #stops NSFW posts from showing up
-                submission = reddit.subreddit("AnimeGirls+CuteAnimeGirls").random()
+                submission = reddit.subreddit("AnimeGirls+CuteAnimeGirls+awwnime").random()
             await message.channel.send("From {0}, *{1}*: {2}".format(
                 submission.subreddit, submission.title, submission.url))
 
